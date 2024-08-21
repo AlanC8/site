@@ -13,7 +13,9 @@ const HomePage = () => {
   const getPrediction = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3001/api/predict");
+      const response = await axios.get(
+        "https://kbtusite-back-production.up.railway.app/api/predict"
+      );
       setPrediction(response.data);
     } catch (error) {
       console.error("Error fetching prediction:", error);
@@ -25,11 +27,12 @@ const HomePage = () => {
   return (
     <div className="relative bg-white h-screen w-full flex flex-col items-center justify-center p-4">
       <IntroScreen />
-      <h2 className="text-center text-4xl md:text-5xl font-extrabold text-black z-10 mb-4">
+      <h2 className="text-center mt-[-100px] text-4xl md:text-5xl font-extrabold text-black z-10 mb-4">
         Получите свое предсказание на будущее
       </h2>
       <h3 className="text-center text-base md:text-lg font-regular text-gray-700 z-10 mb-6 md:mb-8">
-        Добро пожаловать в начало твоего пути. Узнай, что ждёт тебя в мире знаний и возможностей.
+        Добро пожаловать в начало твоего пути. Узнай, что ждёт тебя в мире
+        знаний и возможностей.
       </h3>
 
       {loading ? (
@@ -43,7 +46,6 @@ const HomePage = () => {
         </button>
       )}
 
-      {/* Зарезервированное место под предсказание */}
       <div className="mt-6 md:mt-8 w-full max-w-lg min-h-[100px] p-4 md:p-6 bg-opacity-90 text-center text-gray-800 z-10">
         {prediction ? (
           <TypingAnimation text={prediction} />
@@ -53,7 +55,13 @@ const HomePage = () => {
       </div>
 
       <div className="absolute bottom-4 left-0 right-0 text-center text-sm md:text-base text-gray-700 z-10">
-        Поделись в сторис, отметив нас в Инстаграме <a className="underline font-bold" href="https://www.instagram.com/kbtu.site/">@kbtu.site</a>
+        Поделись в сторис, отметив нас в Инстаграме{" "}
+        <a
+          className="underline font-bold"
+          href="https://www.instagram.com/kbtu.site/"
+        >
+          @kbtu.site
+        </a>
       </div>
 
       <div className="absolute top-0 left-0 z-0 h-full w-full">
